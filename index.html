@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moreen Nchabira Miriti - Personal Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* Global Styles */
+        
+         :root {
+            --primary-color: #6366f1;
+            --secondary-color: #ec4899;
+            --accent-color: #06b6d4;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --text-primary: #0f172a;
+            --text-secondary: #64748b;
+            --text-light: #94a3b8;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --bg-dark: #0f172a;
+            --bg-card: #ffffff;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-glass: rgba(255, 255, 255, 0.25);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background: var(--bg-primary);
+        }
+        
+        html,
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        main {
+            flex: 1;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        a:hover {
+            color: var(--secondary-color);
+        }
+        /* Custom Scrollbar */
+        
+         ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+         ::-webkit-scrollbar-track {
+            background: var(--bg-tertiary);
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+        
+         ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary-color);
+        }
+        /* Navigation */
+        
+        nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 1.75rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-toggle:hover {
+            background: var(--bg-secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+        }
+        
+        .nav-links li {
+            position: relative;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            font-weight: 500;
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .close-btn {
+            display: none;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            background: var(--bg-secondary);
+        }
+        /* Sections */
+        
+        section {
+            padding: 8rem 2rem 4rem;
+            display: none;
+            position: relative;
+        }
+        
+        section.active {
+            display: block;
+            animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        h1,
+        h2,
+        h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        h1::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 4px;
+            background: var(--gradient-secondary);
+            margin: 1.5rem auto;
+            border-radius: 2px;
+        }
+        
+        h2 {
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        h3 {
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            color: var(--primary-color);
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+        /* Home Section */
+        
+        #home {
+            background: var(--bg-primary);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: auto;
+            padding-bottom: 6rem;
+        }
+        
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%), radial-gradient(circle at 40% 40%, rgba(120, 200, 255, 0.2) 0%, transparent 50%);
+            z-index: 1;
+        }
+        
+        .home-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 3rem;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            box-shadow: var(--shadow-xl);
+            transition: transform 0.3s ease;
+        }
+        
+        .home-content:hover {
+            transform: translateY(-5px);
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid transparent;
+            background: var(--gradient-primary);
+            padding: 4px;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .intro {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .highlight-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        /* Timeline and Cards */
+        
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .timeline-item {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: var(--bg-card);
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .timeline-item:hover::before {
+            opacity: 0.03;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .gallery img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .gallery img:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-xl);
+        }
+        /* Section Backgrounds */
+        
+        #childhood {
+            background: var(--bg-secondary);
+        }
+        
+        #education {
+            background: var(--bg-primary);
+        }
+        
+        #skills {
+            background: var(--bg-secondary);
+        }
+        
+        #future {
+            background: var(--bg-primary);
+        }
+        
+        #contact {
+            background: var(--bg-secondary);
+        }
+        
+        .achievements,
+        .activities,
+        .skill-cards,
+        .talent-cards,
+        .aspiration-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .achievement-card,
+        .activity,
+        .skill-card,
+        .talent-card,
+        .aspiration-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .achievement-card::before,
+        .activity::before,
+        .skill-card::before,
+        .talent-card::before,
+        .aspiration-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+        
+        .achievement-card:hover,
+        .activity:hover,
+        .skill-card:hover,
+        .talent-card:hover,
+        .aspiration-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .skill-level {
+            height: 8px;
+            background-color: var(--bg-tertiary);
+            border-radius: 4px;
+            margin-top: 1rem;
+            overflow: hidden;
+        }
+        
+        .level {
+            height: 100%;
+            border-radius: 4px;
+            background: var(--gradient-secondary);
+            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .goal-visualization img {
+            width: 100%;
+            max-width: 600px;
+            display: block;
+            margin: 3rem auto;
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.3s ease;
+        }
+        
+        .goal-visualization img:hover {
+            transform: scale(1.02);
+        }
+        /* Contact Section */
+        
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .contact-info {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-accent);
+            opacity: 0.05;
+            z-index: -1;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .social-links a:hover {
+            background: var(--gradient-secondary);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+        /* Footer */
+        
+        .social-links a {
+            margin-right: 10px;
+            font-size: 20px;
+            color: #444;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #007bff;
+        }
+        
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 10px;
+        }
+        
+        .social-links a {
+            font-size: 24px;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.2s;
+        }
+        
+        .social-links a:hover {
+            color: #007bff;
+            transform: scale(1.2);
+        }
+        
+        @media (max-width: 480px) {
+            .social-links a {
+                font-size: 20px;
+            }
+        }
+        
+        footer {
+            background: var(--bg-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 85%;
+                max-width: 350px;
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 1001;
+                border-left: 1px solid var(--border-color);
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+            .nav-links a {
+                padding: 1rem 2rem;
+                width: 200px;
+                text-align: center;
+            }
+            .close-btn {
+                display: block;
+            }
+            section {
+                padding: 0 2rem 4rem;
+                /* Removed top padding entirely */
+                display: none;
+                position: relative;
+            }
+            body.contact-page section {
+                padding: 0 2rem 4rem;
+            }
+            .home-content {
+                padding: 2rem;
+                margin: 0 1rem;
+            }
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+            .highlights {
+                grid-template-columns: 1fr;
+            }
+            .achievements,
+            .activities,
+            .skill-cards,
+            .talent-cards,
+            .aspiration-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+            .home-content {
+                padding: 1.5rem;
+            }
+            .timeline-item,
+            .achievement-card,
+            .activity,
+            .skill-card,
+            .talent-card,
+            .aspiration-card,
+            .contact-info {
+                padding: 1.5rem;
+            }
+            .social-links a {
+                width: 44px;
+                height: 44px;
+            }
+        }
+        /* Animations */
+        
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .profile-img {
+            animation: float 3s ease-in-out infinite;
+        }
+        /* Loading animations for skill bars */
+        
+        .skill-card:hover .level {
+            animation: skillFill 1s ease-out;
+        }
+        
+        @keyframes skillFill {
+            from {
+                width: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Moreen</div>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <button class="close-btn" id="closeBtn">✕</button>
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#childhood" class="nav-link">Childhood</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#future" class="nav-link">Future</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="active">
+        <div class="home-content">
+            <h1>Moreen Nchabira Miriti</h1>
+            <h2>Software Engineer & Creative</h2>
+            <img src="./images/moh.jpg" alt="Moreen's profile picture" class="profile-img">
+
+            <div class="intro">
+                <h2>About Me</h2>
+                <p>Hello! I'm Moreen, a passionate software engineering student with creative talents in dancing and acting. My journey has been shaped by diverse experiences that have made me resilient, independent, and driven to succeed in the tech world
+                    while expressing myself through the arts.</p>
+
+                <div class="highlights">
+                    <div class="highlight-card">
+                        <h3>My Interests</h3>
+                        <div style="margin-left: 0;">
+                            <p style="margin-bottom: 0.5rem;">✓ Dancing</p>
+                            <p style="margin-bottom: 0.5rem;">✓ Acting</p>
+                            <p style="margin-bottom: 0.5rem;">✓ Software Development</p>
+                            <p style="margin-bottom: 0.5rem;">✓ Mentoring</p>
+                        </div>
+                    </div>
+
+                    <div class="highlight-card">
+                        <h3>My Goals</h3>
+                        <p>To become a highly skilled Software Engineer specializing in networking, earn my Master's degree, and eventually share my knowledge as a lecturer to mentor the next generation of tech professionals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Childhood Section -->
+    <section id="childhood">
+        <h1>My Childhood Journey</h1>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Early Years</h3>
+                <p>My childhood was simple yet vibrant, filled with the typical joys and mischiefs of growing up. I was known for my playful nature and boundless energy, always curious about the world around me.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Family Bonds</h3>
+                <p>I shared strong connections with my family members throughout my childhood. These relationships taught me the value of love, support, and togetherness, even in challenging circumstances.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Formative Experience</h3>
+                <p>Being raised by a single parent was a defining aspect of my upbringing. This experience shaped my character profoundly, making me stronger, more independent, and resilient. It helped me understand that women have equal potential to achieve
+                    great things.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Building Confidence</h3>
+                <p>My childhood experiences instilled in me a deep sense of confidence and self-belief. I learned early that challenges are opportunities for growth, and this mindset continues to guide me.</p>
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <h1>My Educational Journey</h1>
+
+        <div class="academic">
+            <h2>Academic Achievements</h2>
+            <p>Throughout my academic career, I have consistently demonstrated excellence in my studies. I was known as a bright and dedicated student who took my education seriously, resulting in strong academic performance and recognition for my achievements.</p>
+
+            <div class="achievements">
+                <div class="achievement-card">
+                    <h3>Science Fairs</h3>
+                    <p>Actively participated in numerous science fairs, showcasing my analytical and problem-solving skills through innovative projects.</p>
+                </div>
+
+                <div class="achievement-card">
+                    <h3>Academic Honors</h3>
+                    <p>Consistently earned top grades and academic recognition for my dedication to learning and intellectual curiosity.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="extracurricular">
+            <h2>Extracurricular Activities</h2>
+            <p>Beyond academics, I actively engaged in extracurricular activities that allowed me to develop leadership skills and creative expression.</p>
+
+            <div class="activities">
+                <div class="activity">
+                    <h3>Drama Club</h3>
+                    <p>Served as leader of the drama club, guiding my team to national competitions multiple times during high school. This experience honed my public speaking, teamwork, and creative thinking abilities.</p>
+                </div>
+
+                <div class="activity">
+                    <h3>Music Club</h3>
+                    <p>As a member and later leader of the music club, I developed my artistic expression and learned the value of discipline and practice in achieving excellence.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="current">
+            <h2>Current Pursuits</h2>
+            <p>Now as a university student studying Software Engineering, I continue to balance academic rigor with creative outlets, bringing the same passion and dedication to my higher education that marked my earlier schooling.</p>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h1>My Skills & Talents</h1>
+
+        <div class="professional-skills">
+            <h2>Professional Skills</h2>
+
+            <div class="skill-cards">
+                <div class="skill-card">
+                    <h3>Software Engineering</h3>
+                    <p>As an aspiring software engineer, I'm developing expertise in programming, system design, and problem-solving within the tech field.</p>
+                    <div class="skill-level">
+                        <div class="level" style="width: 80%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Content Creation</h3>
+                    <p>Skilled in creating engaging digital content across various platforms, combining technical know-how with creative storytelling.</p>
+                    <div class="skill-level">
+                        <div class="level" style="width: 75%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Entrepreneurship</h3>
+                    <p>Possess business acumen and innovative thinking to identify opportunities and create value through entrepreneurial ventures.</p>
+                    <div class="skill-level">
+                        <div class="level" style="width: 70%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="talents">
+            <h2>Natural Talents</h2>
+
+            <div class="talent-cards">
+                <div class="talent-card">
+                    <h3>Dancing</h3>
+                    <p>A gifted dancer with natural rhythm and expressive movement, able to learn and perform various dance styles with grace and energy.</p>
+                </div>
+
+                <div class="talent-card">
+                    <h3>Acting</h3>
+                    <p>A talented actress with strong emotional range and stage presence, capable of bringing characters to life with authenticity and depth.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="hobbies">
+            <h2>Hobbies & Interests</h2>
+            <ul>
+                <li>Exploring new culinary experiences and trying diverse foods</li>
+                <li>Hiking and outdoor adventures</li>
+                <li>Connecting with nature and appreciating natural beauty</li>
+                <li>Meeting new people and learning about different cultures</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Future Section -->
+    <section id="future">
+        <h1>My Future Aspirations</h1>
+
+        <div class="career-goals">
+            <h2>Career Goals</h2>
+            <p>My primary career objective is to become a highly skilled and respected Software Engineer with specialized expertise in networking. I aim to:</p>
+
+            <ul>
+                <li>Master the technical aspects of network architecture, security, and optimization</li>
+                <li>Develop innovative solutions to complex networking challenges</li>
+                <li>Contribute to advancements in networking technology and infrastructure</li>
+                <li>Bridge the gap between technical excellence and practical business applications</li>
+            </ul>
+
+            <div class="goal-visualization">
+                <!-- <img src="https://via.placeholder.com/500x300" alt="Network technology"> -->
+            </div>
+        </div>
+
+        <div class="academic-aspirations">
+            <h2>Academic Aspirations</h2>
+            <p>Education is a lifelong journey for me, and I plan to continue mine through:</p>
+
+            <div class="aspiration-cards">
+                <div class="aspiration-card">
+                    <h3>Master's Degree</h3>
+                    <p>Pursue advanced studies to deepen my technical knowledge and research capabilities in software engineering and networking.</p>
+                </div>
+
+                <div class="aspiration-card">
+                    <h3>Continuous Learning</h3>
+                    <p>Stay current with evolving technologies through certifications, workshops, and self-directed learning throughout my career.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="long-term-vision">
+            <h2>Long-Term Vision</h2>
+            <p>Ultimately, I aspire to transition into academia as a lecturer, where I can:</p>
+
+            <ul>
+                <li>Share my knowledge and industry experience with the next generation of tech professionals</li>
+                <li>Mentor young people, especially women, to pursue careers in technology</li>
+                <li>Conduct research that advances the field while solving real-world problems</li>
+                <li>Bridge the gap between industry needs and academic preparation</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h1>Get In Touch</h1>
+
+        <div class="social-links">
+            <a href="https://www.instagram.com/rusia_dalphine_?igsh=M2J6NnJnNnR5ZzY0&utm_source=ig_contact_invite" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100087313460064" target="_blank" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://wa.me/254113454278" target="_blank" aria-label="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/moreen-nchabira-150104377?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://x.com/rusiadalphine2?t=4wA6wRD5ZBtJe2lS85khPw&s=09" target="_blank" aria-label="X">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+        </div>
+
+        </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Moreen Nchabira Miriti. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section');
+            const menuToggle = document.getElementById('menuToggle');
+            const closeBtn = document.getElementById('closeBtn');
+            const navLinksContainer = document.getElementById('navLinks');
+
+            // Set first section as active by default
+            sections[0].classList.add('active');
+
+            // Mobile menu toggle
+            menuToggle.addEventListener('click', function() {
+                navLinksContainer.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            closeBtn.addEventListener('click', function() {
+                navLinksContainer.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Handle navigation clicks
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    // Close mobile menu if open
+                    navLinksContainer.classList.remove('active');
+                    document.body.style.overflow = '';
+
+                    // Get target section ID
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+
+                    // Update active states
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    this.classList.add('active');
+
+                    sections.forEach(section => section.classList.remove('active'));
+                    targetSection.classList.add('active');
+
+                    // Smooth scroll to section
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Close menu when clicking outside on mobile
+            document.addEventListener('click', function(e) {
+                if (navLinksContainer.classList.contains('active') &&
+                    !e.target.closest('.nav-links') &&
+                    e.target !== menuToggle) {
+                    navLinksContainer.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Enhanced navigation effects on scroll
+            window.addEventListener('scroll', function() {
+                const nav = document.querySelector('nav');
+                if (window.scrollY > 100) {
+                    nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                    nav.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.1)';
+                } else {
+                    nav.style.background = 'rgba(255, 255, 255, 0.8)';
+                    nav.style.boxShadow = 'none';
+                }
+            });
+
+            // Animate skill bars when they come into view
+            const observerOptions = {
+                threshold: 0.3,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const skillBars = entry.target.querySelectorAll('.level');
+                        skillBars.forEach(bar => {
+                            const width = bar.style.width;
+                            bar.style.width = '0';
+                            setTimeout(() => {
+                                bar.style.width = width;
+                            }, 200);
+                        });
+                    }
+                });
+            }, observerOptions);
+
+            // Observe skills section
+            const skillsSection = document.querySelector('#skills');
+            if (skillsSection) {
+                observer.observe(skillsSection);
+            }
+
+            // Add stagger animation to cards
+            const cards = document.querySelectorAll('.timeline-item, .achievement-card, .activity, .skill-card, .talent-card, .aspiration-card');
+            const cardObserver = new IntersectionObserver(function(entries) {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, index * 100);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                cardObserver.observe(card);
+            });
+
+            // Responsive adjustments
+            function handleResize() {
+                if (window.innerWidth > 768) {
+                    navLinksContainer.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+
+            window.addEventListener('resize', handleResize);
+            handleResize();
+
+            // Add smooth scroll behavior for better UX
+            document.documentElement.style.scrollBehavior = 'smooth';
+
+            // Parallax effect for background shapes (if any)
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const rate = scrolled * -0.5;
+
+                const homeSection = document.querySelector('#home');
+                if (homeSection && homeSection.classList.contains('active')) {
+                    homeSection.style.transform = `translateY(${rate}px)`;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
